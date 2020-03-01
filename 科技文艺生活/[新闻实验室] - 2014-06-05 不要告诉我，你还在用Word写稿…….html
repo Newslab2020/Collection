@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'>
+	<title>
+		不要告诉我，你还在用Word写稿……
+	</title>
+	<script src='https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js'>
+	</script>
+	<style>
+		a {color: #607fa6;text-decoration:none;word-wrap:break-word;word-break:break-all;}.rich_media_title{padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid #e7e7eb;font-weight:400;} .rich_media_meta_list{font-size:14px;margin-bottom: 22px;}
+		.rich_media_meta{display:inline-block;vertical-align:middle;margin-right:8px;margin-bottom:10px;font-size:14px;}.rich_media_meta_text{color:#8c8c8c;color:rgba(0, 0, 0, 0.3)}.rich_media_meta_list
+		em {font-style: normal;}@media screen and (max-width:768px){.rich_media{position:
+		relative;padding: 20px 15px 15px;background-color: #fff;}}.rich_media_content{text-align:justify;} .rich_media_content * {max-width:100%!important;box-sizing: border-box!important;-webkit-box-sizing:
+		border-box!important;word-wrap: break-word!important;}.rich_media_content
+		blockquote {margin: 0;padding-left: 10px;border-left: 3px solid #dbdbdb;}.rich_media_content
+		.list-paddingleft-2 {padding-left: 2.2em;}a.rich_media_meta_nickname{display: none;}@media screen and (min-width:1025px){.rich_media{position:relative;}a.rich_media_meta_nickname{display:inline-block!important;}span.rich_media_meta_nickname
+		{display: inline-block!important;}.rich_media {width:677px;margin-left:auto;margin-right:auto;}}a.fwjm{font-size: 12px;color: #ececec;}.tenvideo_player {position: relative;width:
+		100 %;height: 100 %;margin: auto;background: #000;}* {margin:0px;padding:0px;} body{line-height: 1.6;letter-spacing: .034em;}
+		.dy_all {text-align: center;margin: 30px 0;} .dy_all a {display: inline-block;height:
+		38px;line-height: 38px;padding: 0 18px;background-color: #009688;color:
+		#fff;white-space: nowrap;font-size: 14px;border: none;border-radius: 2px;cursor:
+		pointer;text-align: center;outline: 0;-webkit-appearance: none;transition:
+		all .3s;-webkit-transition: all .3s;box-sizing: border-box;} img{max-width: 677px!important;}
+
+		.crawler-info{padding: 8px 0;} .article-link>img{margin-left: 20px;width: 16px;}
+		.comment-item::before,.comment-item::after{content:'';display:block;height:0;visibility:hidden;clear:both;*zoom:1;} .comment-item{margin-bottom:30px;}
+		.avatar{width:12%; padding-right:10px;float:left;box-sizing:border-box;} .avatar img{width:100%;}
+		.comment-body{float:left;width:88%;} .comment-body .comment-info{color:#b3b3b3;margin-bottom:4px;margin-top: -5px;} .comment-body .comment-info>span:last-child{float:right;} 
+		.comment-author{border-left:4px solid green;padding-left:6px;margin:8px 0;}
+
+		@media screen and (max-width: 420px) {.article-link>img {margin-left: 0px;}}
+		@media screen and (min-width: 480px) {.avatar {width: 9%;}.comment-body {width: 91%;}}
+	</style>
+</head>
+<body>
+	<div id='js_article' class='rich_media'>
+		<div class="crawler-info">
+			<a href='https://www.52pojie.cn' class='fwjm' target='_blank'>
+				提供的爬取软件来源于：52pojie.cn@夜泉 免费下载使用
+			</a>
+			<a href='https://mp.weixin.qq.com/s?__biz=MjM5NDEwNjQ0MQ==&amp;mid=200875788&amp;idx=1&amp;sn=a8d3fcaa3c9f29739c52c7cb6ea9fedc&amp;chksm=2881622a1ff6eb3cf32dcd25145d3b418f5c06d4ec349be6727b497b208ddd4375789f5a9aa5&amp;scene=27#wechat_redirect&cpage=40' target='_blank' class="article-link">
+				<img id="6c58b9f0-92ef-4fc6-831b-5bb679e709d5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAMAAABA3o1rAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjk4QUEzQzVDNkNGQjExRTk5NzNBQ0VBMjgzMjY1NjkwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjk4QUEzQzVENkNGQjExRTk5NzNBQ0VBMjgzMjY1NjkwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OThBQTNDNUE2Q0ZCMTFFOTk3M0FDRUEyODMyNjU2OTAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OThBQTNDNUI2Q0ZCMTFFOTk3M0FDRUEyODMyNjU2OTAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5TKSKsAAAAclBMVEUuLi77+/stLS1VVVXx8fFOTk7s7Ozt7e1qamp5eXlNTU2WlpZFRUU6Ojrq6urn5+d/f3/8/Pw9PT0/Pz+YmJg8PDyZmZlAQECfn5+QkJBBQUFra2vo6OhDQ0OSkpKenp5WVlY+Pj7r6+tpaWksLCz///9o6ILHAAAAJnRSTlP/////////////////////////////////////////////////AKd6gbwAAACNSURBVHjajJHpEoIwDISDVMotcnuCmLz/K9KCdlqO6v7p7Mw3yW4KxG85fnUkIVfZ5J0SsCtqcgRw0HzjQYY2AAOIdRuaK4ReAPJ5nmglL5qICahpU60C0uXguQ9TgIwGJoDnT9z/ABmxt60ot0N2CsDLfb9mvBxs9ql+n5o9bEDBgbif7/1F4g80CjAAqrVAnnsm5f8AAAAASUVORK5CYII=" />
+			</a>
+		</div>
+		<div id="img-content" class="rich_media_wrp">
+                
+                <h2 class="rich_media_title" id="activity-name">不要告诉我，你还在用Word写稿……</h2>
+                <div id="meta_content" class="rich_media_meta_list">
+                                                                                                                <span class="rich_media_meta rich_media_meta_text">
+                                                                    方可成
+                                                            </span>
+                                                                
+                                        <span class="rich_media_meta rich_media_meta_nickname" id="profileBt"><a href="javascript:void(0);">新闻实验室</a>
+                      <div id="js_profile_qrcode" class="profile_container" style="display:none;">
+                          <div class="profile_inner">
+                              <strong class="profile_nickname">新闻实验室</strong>
+                              <img class="profile_avatar" id="js_profile_qrcode_img" src="" alt="">
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">微信号</label>
+                              <span class="profile_meta_value">newslab</span>
+                              </p>
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">功能介绍</label>
+                              <span class="profile_meta_value">这里是方可成的新闻实验室，期待与你产生化学反应！在这里你可以读到关于新闻、媒体、科技、文艺、社会等多方面的跨界话题，有趣有料。</span>
+                              </p>
+                              
+                          </div>
+                          <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
+                              <i class="profile_arrow arrow_out"></i>
+                              <i class="profile_arrow arrow_in"></i>
+                          </span>
+                      </div>
+                    </span>
+                    <em id="publish_time" class="rich_media_meta rich_media_meta_text">2014-06-05</em>
+                </div>
+                
+
+                
+
+                
+
+                
+                                
+
+
+                
+                
+                
+                
+                                                
+                                <div class="rich_media_thumb_wrp" id="media">
+                    
+                                        
+                                    </div>
+                                                
+                                
+                                
+                
+                <div class="rich_media_content " id="js_content" style="">
+                    
+
+                    
+
+                    
+                    
+                    <p><strong>「这里是方可成的新闻实验室，微信公众账号newslab」</strong></p><p><br  /></p><p><strong>§本文首发于<span style="color: rgb(0, 176, 240);">2014年6月5日</span>，这是新闻实验室的第<span style="color: rgb(0, 176, 240);">41</span>篇文章</strong></p><p><strong>§本文归属栏目：<span style="color: rgb(0, 176, 240);">#工具箱#</span>（为你推荐最好用、最适合的工具，提高生产力）</strong></p><p><br  /></p><p><br  /></p><p>就像骑士要有一匹好马，厨师要有一套好刀，写作的人也需要花点心思研究自己的工具——以前是纸笔，现在则是软件。</p><p><br  /></p><p>写稿这件事，工具肯定不是最重要的。伟大的作家在卫生纸上也能写出好作品，而再先进的工具也没法让一个草包突然变成文豪。但必须承认的是，好的写稿工具确实能帮助你提高效率、避免意外、舒畅心情，说不定还会给你带来意想不到的灵感。</p><p><br  /></p><p>这篇文章主要面向文字记者，平时给媒体撰稿或是喜欢写写博客的朋友也可一读，对更个人化的写作，比如日记、情书可能也会带去一点点启发。</p><p><br  /></p><p><strong>为什么要抛弃Word</strong></p><p><br  /></p><p>前两天，新闻实验室做了个简单的调查：你用什么软件写稿？并不意外的，在一百来个回复中，回答Word和WPS的人最多，也有一些用Mac的朋友使用Pages。</p><p><br  /></p><p>用Word当然有充足的理由，比如：</p><p>——<strong>普及率高</strong>（虽然很多都是盗版），基本上人人都打得开。之前doc格式升级成docx格式的时候，曾经造成很多麻烦，不过现在大家的Word应该都是2007之后的版本了，这个问题基本不再存在。</p><p>——<strong>习惯</strong>，从小到大用的都是这个。</p><p>——有<strong>字数统计、拼写检查</strong>（虽然效果不佳）等常用功能。</p><p>——有<strong>修订模式</strong>，虽然很不好用。一位要求匿名的记者说：“最大问题是编辑不会或是不习惯用修订模式。经常导致他删了啥改了啥我都不知道。”</p><p><br  /></p><p>但是，Word也有很多麻烦的地方：</p><p>——<strong>不够稳定，非实时存盘</strong>。几乎每个用Word的人都遇到过死机或断电导致前功尽弃的悲惨经历。好在现在有了自动保存功能，理论上至少可以找回一个比较近的版本。</p><p>——<strong>功能冗余</strong>。Word是一款很笨重的软件，而它的许多功能又是普通写作者极少用到的。</p><p>——<strong>难以同时处理多个文档</strong>。不管是写新闻还是写论文，都有千头万绪的资料来源，同时开着十个文档来写作是很常见的。但就像新闻实验室网友查非所说：用Word整理稿子好复杂，调取不方便。另一位网友Alexander陈天恩说：一旦窗口开的超过10个以上，就会容易出现软件崩溃，工作回到原点。</p><p>——<strong>没有移动版</strong>。在这个移动互联网时代，一款不能在手机上用的软件堪称废柴。你在微信上看到了一段精彩文字，想保存下来在自己的文章中引用，用Word做得到吗？</p><p>——<strong>难以协作</strong>。</p><p>——<strong>Word本身不是一款好的软件</strong>，详情可参见《为什么 Word 必须死 (http://apple4us.com/2013/10/why-microsoft-word-must-die-charlie-stross-chinese.html  )》。</p><p>——引用字节社创始人李如一的话：”Office已经是你电脑上<strong>唯一的盗版软件</strong>，导致心情不佳。“</p><p><br  /></p><p>还有一个重要问题是：Word的排版功能看起来挺实用，但我们真的需要排版吗？每一个拖延症患者都有这样的经历：在Word里敲了一小段字之后，就开始不断调整字体、字号、行距、段首缩进，直到一切都趋于完美，时间已经过去了两个小时。更崩溃的是，你排好的完美版面，到别人的电脑上一打开，可能就面目全非了。</p><p><br  /></p><p>本文的一项核心理念是：写作软件和排版软件是两类不同的软件。而Word是两头都占，但两头都不专业。写作软件需要舒服的视觉效果，但不需要复杂的排版方式；需要令人专注的界面，不需要太多让人分心的按钮；需要便于整理和调取材料、组织文章结构，不需要和写作无关的功能。</p><p><br  /></p><p><strong>让写作的归写作，排版的归排版吧！</strong>以下我将根据不同的需求，推荐不同的写作软件。</p><p><br  /></p><p><strong>纯文本万岁</strong></p><p><br  /></p><p>如果是写千字小文，我强烈建议你用纯文本（txt）的方式写作。事实上，即便是更长、更复杂的文章，纯文本也可以驾驭——我在《南方周末》工作三年，稿件平均长度在3000字以上，绝大部分都是用纯文本写的。</p><p><br  /></p><p>纯文本的最大优势是简洁、轻便、稳定，让你完全专注于写作。你每敲一个汉字，文件就保存两个字节，不附加任何繁文缛节，想靠排版拖延时间也没办法。由于格式简单、尺寸娇小，软件基本不会突然崩溃。</p><p><br  /></p><p>对于记者来说，文本文档还有一个好处——如新闻实验室网友曾维尼所言：“可以把字拷贝直接粘贴到方正飞腾，同事有次用word文档编辑就抓狂了，‘难道我一个一个标点符号帮你改过来？！’”这个道理同样适用于写博客的人——把经过排版的Word文档粘贴进博客后台，基本上会变得乌七八糟。</p><p><br  /></p><p>当然，Windows自带的记事本过于简陋，它在自动换行等问题上的笨拙表现也令人崩溃。所以我推荐使用一些更高级的文本编辑软件。</p><p><br  /></p><p>我在Windows下写作时，使用的一直是<strong>EmEditor</strong>。这款软件很小但功能不一般，包括写作者很需要的字数统计和非常强大的查找替换功能（实际上，它还可以用来写代码。）另外，它可以像浏览器一样实现多标签页浏览，在同一个程序窗口中同时打开许多文档，极大地方便了文档之间的文字腾挪。</p><p><br  /></p><p>如果确实需要在写作之后排版再发给其他人，可以在用纯文本写作完毕后，再粘贴进其他软件进行必要的格式调整。</p><p><br  /></p><p><strong>深度稿件利器：Scrivener</strong></p><p><br  /></p><p>如果你是深度记者，做一个题至少得十天半个月，经常要将十几万字的材料编织成几千上万字的稿件，那么你一定要尝试<strong>Scrivener</strong>。</p><p><br  /></p><p>Scrivener是一款专门为写作长文章设计的软件。我的朋友鹤公子曾经专文介绍过，以下引用他的部分文字：</p><p><br  /></p><p><span style="color: rgb(127, 127, 127);">它的核心思想是把篇幅很长的文字打成片段。设想一下你在用Word写一本小说，已经写得很长很长，恐怕已经能感觉到反应迟滞了。但是在Scrivener中就不会。在Scrivener里一篇文章或者一本书，可以按部分、章节、场景分成好多层的文件夹，文件夹中则盛放实际的文本（可以是一章、一节，甚至短到一两个段落）。屏幕左边的Binder显示这些文件夹，中间的Editor是主编辑窗口，右边的Inspector可以填写这一段文字的相关信息（包括情节梗概、版本状态、注释、参考资料等）。</span></p><p><br  /></p><p><span style="color: rgb(127, 127, 127);">Scrivener还可以将你的文章完美地导出成RTF、Word、PDF以及mobi、epub等常见格式。</span></p><p><br  /></p><p>将长文拆解成不同的片段，或者说用一系列片段来组成一篇长文，这样的设计思路极其适合长篇稿件的写作。</p><p><br  /></p><p>此外，Scrivener还为每一个写作项目（即一篇文章或一本书）准备了专门的“资料”文件夹，方便你保存和整理采访得到的各种资料。</p><p><br  /></p><p>有传言说村上春树也用这个软件，不知真假。但可以确定的是：你可以一试，因为它提供了30天的试用，而且这里的30天不是从你安装当天开始计算的连续30天，而是你真正使用的时间。也就是说，如果你每个月使用3天，那么你可以免费用10个月。另外，虽然我不推荐，但是网上可以搜到破解程序。</p><p><br  /></p><p><strong>在云端：随时备份、移动写作及团队协作</strong></p><p><br  /></p><p>如果你习惯随时为自己的写作收集素材和灵感，或者需要与他人协作，那么你应该尝试使用云端服务。最著名的此类服务包括<strong>Evernote（印象笔记）</strong>和<strong>有道云笔记</strong>。其实Google Docs也是很好的云端程序，当然，墙内就算了。</p><p><br  /></p><p>使用云端服务的好处包括：其一，实时在云端保存，妈妈再也不用担心停电死机或者硬盘坏掉，记者再也不用担心被人抢录音笔、夺数据卡；其二，多客户端，不管是在电脑，在手机，还是在iPad上，随时随地可以在同一个程序里收集素材和写作，搜索网页时的发现、采访时拍的照片、公交车上转瞬即逝的灵感，都可以马上收进资料库中；其三，可以多人协作，不用来来往往地发送不同版本的Word文档了。</p><p><br  /></p><p>目前这些软件的开发还不够成熟，同步时偶尔会出错。不过，移动和云端一定是越来越主流的趋势。</p><p><br  /></p><p><strong>Markdown：最前沿的写作方式</strong></p><p><br  /></p><p>上文提到纯文本写作的优势时，一定有人在嘀咕：虽说写作和排版是两码事，但是一些基本的功能总是需要的吧？比如小标题突出显示一下，重要文字加个粗体什么的，这本身也是帮助写作者理清思路。这个，纯文本能做到吗？</p><p><br  /></p><p>这时，Markdown写作的优势就体现出来了。这种语言本质上还是纯文本，简单轻便，让人专注写作，但是它又通过非常简单的标记方式（比如二级标题就是在文字前面加两个#）使得作者在写作和读者在阅读时能够清晰分辨出基本的格式。而且，通过使用Markdown写作软件，可以方便地将文本输出成带格式的Word、PDF、epub、mobi等各种格式的文档。这样一来，也就不用在写完之后又再新建一个Word文档来排版了。</p><p><br  /></p><p>Markdown语言的好处还不止这些，有兴趣的朋友可以阅读这几篇文章：《为什么文科生也该用markdown写作? (http://www.douban.com/note/221187015/ )》、《为什么作家应该用 Markdown 保存自己的文稿 (http://apple4us.com/2012/02/why-writers-should-use-markdown.html  )》、《Markdown写作浅谈 (http://www.yangzhiping.com/tech/r-markdown-knitr.html  )》。目前口碑最好的中文Markdown写作软件是<strong>Mou</strong>（免费）。</p><p><br  /></p><p>顺便说一句，虽然Markdown堪称“前沿”，但实际上它发明已有十年之久，只不过之前只在程序员小圈子里流行。</p><p><br  /></p><p><strong>总结</strong></p><p><br  /></p><p>如果你对提高生产力不感兴趣，或者觉得不想花时间接受新事物，那么继续用Word/WPS/Pages也是还可以的选择。但如果你希望通过使用更好的工具提高自己的生产力，那么是时候抛弃Word了。写不复杂的短文，纯文本足矣，Windows自带的记事本简陋了点，EmEditor很强大；写深度报道、论文、中长篇小说，Scrivener是不可不试的神器；强调随时随地搜集资料以及与他人协作，应该用Evernote等云端服务；若是有那么一点Geek精神，则一定要领略一下Markdown语言的魅力。当然，每个人都应该根据自己的实际需求，灵活选择和组合使用以上工具。</p><p><br  /></p><p>在前几天的调查中，还有一些朋友提供了比较小众但很有价值的选择。比如，我的前同事、南方周末著名调查记者陈中小路使用的是<strong>bean</strong>，她的推荐理由是“简洁”。网友刘修远说他喜欢Pages的淡黄色底板，而网友象罔的爱好则更特别：“chromebook，writer，因为可以设置打字机的背景音，很好听，很有写作的感觉。”</p><p><br  /></p><p>最后，有人估计想问：有没有一款写作软件能把上面的几类需求全部搞定？既有纯文本写作的简洁专注，又能像Scrivener那样可以把文章拆成片段、并方便整理大量资料，又能云端同步，支持在手机上写作，又支持Markdown语言？</p><p><br  /></p><p>好像还真有。我的朋友、“政见”团队设计师钱争予推荐了一款叫“尤利西斯”（<strong>Ulysses III</strong>）的软件，是专门为写作者精心设计的，基本能满足以上所有需求。这款软件唯一的缺点是：太贵，售价44.99美元，或283元人民币。它同样提供了试用版，不过不像Scrivener那样慷慨，只提供了10个小时的试用权限。你读到的这篇文章就是用它的试用版写的，初步试用感想是：极其好用，非常长草。我想在这里发起一项小小的“众筹”：如果你觉得这篇文章对你有些价值，或者如果你还想读到对Ulysses III的详细测评，欢迎给我的支付宝账户（ wkjy1987@aliyun.com ）打个五块、十块钱。如果大家的众筹金额达到了人民币100元，我会购买这款软件，并为大家撰写详尽的测评。提前谢谢各位的支持！</p><p><br  /></p><p><strong>◆</strong></p><p><br  /></p><p><strong>这里是方可成的新闻实验室，欢迎关注，期待与你产生化学反应</strong></p><p><strong>方法1：点击右上角的按钮，选择“查看公众账号”，点击关注</strong></p><p><strong>方法2：在添加朋友中搜索newslab</strong></p>
+				</div>
+
+                
+                				        
+
+                
+
+                
+<div class="ct_mpda_wrp" id="js_sponsor_ad_area" style="display: none;"></div>
+
+
+                
+                <div class="read-more__area" id="js_more_read_area" style="display:none;">
+                    
+                </div>
+
+                 
+                                                </div>
+		<div class="comment">
+			<h3 style="margin:26px 0;font-weight:100;padding-bottom:4px;border-bottom:1px solid #ccc;">精选留言</h3>
+		    暂无...
+		</div>
+	</div>
+	<div class='dy_all'>
+		<a href='https://www.52pojie.cn/' target='_blank'>
+			吾爱破解论坛
+		</a>
+	</div>
+</body>
+<script>
+$(function(){
+    var wX_contentArray = document.getElementsByClassName('rich_media_content');
+    for(let i = 0; i < wX_contentArray.length;i++){
+       wX_contentArray[i].style.visibility = '';
+    }
+    if(document.getElementById('js_content')){
+        document.getElementById('js_content').style.visibility = '';
+    }
+})
+</script>

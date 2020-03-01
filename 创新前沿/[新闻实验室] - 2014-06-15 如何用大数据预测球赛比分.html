@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'>
+	<title>
+		如何用大数据预测球赛比分
+	</title>
+	<script src='https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js'>
+	</script>
+	<style>
+		a {color: #607fa6;text-decoration:none;word-wrap:break-word;word-break:break-all;}.rich_media_title{padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid #e7e7eb;font-weight:400;} .rich_media_meta_list{font-size:14px;margin-bottom: 22px;}
+		.rich_media_meta{display:inline-block;vertical-align:middle;margin-right:8px;margin-bottom:10px;font-size:14px;}.rich_media_meta_text{color:#8c8c8c;color:rgba(0, 0, 0, 0.3)}.rich_media_meta_list
+		em {font-style: normal;}@media screen and (max-width:768px){.rich_media{position:
+		relative;padding: 20px 15px 15px;background-color: #fff;}}.rich_media_content{text-align:justify;} .rich_media_content * {max-width:100%!important;box-sizing: border-box!important;-webkit-box-sizing:
+		border-box!important;word-wrap: break-word!important;}.rich_media_content
+		blockquote {margin: 0;padding-left: 10px;border-left: 3px solid #dbdbdb;}.rich_media_content
+		.list-paddingleft-2 {padding-left: 2.2em;}a.rich_media_meta_nickname{display: none;}@media screen and (min-width:1025px){.rich_media{position:relative;}a.rich_media_meta_nickname{display:inline-block!important;}span.rich_media_meta_nickname
+		{display: inline-block!important;}.rich_media {width:677px;margin-left:auto;margin-right:auto;}}a.fwjm{font-size: 12px;color: #ececec;}.tenvideo_player {position: relative;width:
+		100 %;height: 100 %;margin: auto;background: #000;}* {margin:0px;padding:0px;} body{line-height: 1.6;letter-spacing: .034em;}
+		.dy_all {text-align: center;margin: 30px 0;} .dy_all a {display: inline-block;height:
+		38px;line-height: 38px;padding: 0 18px;background-color: #009688;color:
+		#fff;white-space: nowrap;font-size: 14px;border: none;border-radius: 2px;cursor:
+		pointer;text-align: center;outline: 0;-webkit-appearance: none;transition:
+		all .3s;-webkit-transition: all .3s;box-sizing: border-box;} img{max-width: 677px!important;}
+
+		.crawler-info{padding: 8px 0;} .article-link>img{margin-left: 20px;width: 16px;}
+		.comment-item::before,.comment-item::after{content:'';display:block;height:0;visibility:hidden;clear:both;*zoom:1;} .comment-item{margin-bottom:30px;}
+		.avatar{width:12%; padding-right:10px;float:left;box-sizing:border-box;} .avatar img{width:100%;}
+		.comment-body{float:left;width:88%;} .comment-body .comment-info{color:#b3b3b3;margin-bottom:4px;margin-top: -5px;} .comment-body .comment-info>span:last-child{float:right;} 
+		.comment-author{border-left:4px solid green;padding-left:6px;margin:8px 0;}
+
+		@media screen and (max-width: 420px) {.article-link>img {margin-left: 0px;}}
+		@media screen and (min-width: 480px) {.avatar {width: 9%;}.comment-body {width: 91%;}}
+	</style>
+</head>
+<body>
+	<div id='js_article' class='rich_media'>
+		<div class="crawler-info">
+			<a href='https://www.52pojie.cn' class='fwjm' target='_blank'>
+				提供的爬取软件来源于：52pojie.cn@夜泉 免费下载使用
+			</a>
+			<a href='https://mp.weixin.qq.com/s?__biz=MjM5NDEwNjQ0MQ==&amp;mid=200916477&amp;idx=1&amp;sn=67fa0d1dafff0e8532bb4fe344206d51&amp;chksm=2881c0db1ff649cdb92efd4eea85320df8fea70e8d527dddf5358525ccc8f43c64ca6ad0f4bd&amp;scene=27#wechat_redirect&cpage=40' target='_blank' class="article-link">
+				<img id="6c58b9f0-92ef-4fc6-831b-5bb679e709d5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAMAAABA3o1rAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjk4QUEzQzVDNkNGQjExRTk5NzNBQ0VBMjgzMjY1NjkwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjk4QUEzQzVENkNGQjExRTk5NzNBQ0VBMjgzMjY1NjkwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OThBQTNDNUE2Q0ZCMTFFOTk3M0FDRUEyODMyNjU2OTAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OThBQTNDNUI2Q0ZCMTFFOTk3M0FDRUEyODMyNjU2OTAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5TKSKsAAAAclBMVEUuLi77+/stLS1VVVXx8fFOTk7s7Ozt7e1qamp5eXlNTU2WlpZFRUU6Ojrq6urn5+d/f3/8/Pw9PT0/Pz+YmJg8PDyZmZlAQECfn5+QkJBBQUFra2vo6OhDQ0OSkpKenp5WVlY+Pj7r6+tpaWksLCz///9o6ILHAAAAJnRSTlP/////////////////////////////////////////////////AKd6gbwAAACNSURBVHjajJHpEoIwDISDVMotcnuCmLz/K9KCdlqO6v7p7Mw3yW4KxG85fnUkIVfZ5J0SsCtqcgRw0HzjQYY2AAOIdRuaK4ReAPJ5nmglL5qICahpU60C0uXguQ9TgIwGJoDnT9z/ABmxt60ot0N2CsDLfb9mvBxs9ql+n5o9bEDBgbif7/1F4g80CjAAqrVAnnsm5f8AAAAASUVORK5CYII=" />
+			</a>
+		</div>
+		<div id="img-content" class="rich_media_wrp">
+                
+                <h2 class="rich_media_title" id="activity-name">如何用大数据预测球赛比分</h2>
+                <div id="meta_content" class="rich_media_meta_list">
+                                                                                                                <span class="rich_media_meta rich_media_meta_text">
+                                                                    王法
+                                                            </span>
+                                                                
+                                        <span class="rich_media_meta rich_media_meta_nickname" id="profileBt"><a href="javascript:void(0);">新闻实验室</a>
+                      <div id="js_profile_qrcode" class="profile_container" style="display:none;">
+                          <div class="profile_inner">
+                              <strong class="profile_nickname">新闻实验室</strong>
+                              <img class="profile_avatar" id="js_profile_qrcode_img" src="" alt="">
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">微信号</label>
+                              <span class="profile_meta_value">newslab</span>
+                              </p>
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">功能介绍</label>
+                              <span class="profile_meta_value">这里是方可成的新闻实验室，期待与你产生化学反应！在这里你可以读到关于新闻、媒体、科技、文艺、社会等多方面的跨界话题，有趣有料。</span>
+                              </p>
+                              
+                          </div>
+                          <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
+                              <i class="profile_arrow arrow_out"></i>
+                              <i class="profile_arrow arrow_in"></i>
+                          </span>
+                      </div>
+                    </span>
+                    <em id="publish_time" class="rich_media_meta rich_media_meta_text">2014-06-15</em>
+                </div>
+                
+
+                
+
+                
+
+                
+                                
+
+
+                
+                
+                
+                
+                                                
+                                <div class="rich_media_thumb_wrp" id="media">
+                    
+                                        
+                                    </div>
+                                                
+                                
+                                
+                
+                <div class="rich_media_content " id="js_content" style="">
+                    
+
+                    
+
+                    
+                    
+                    <p><span style="background-color: rgb(216, 216, 216);"><strong>「这里是方可成的新闻实验室，微信公众账号newslab」</strong></span></p><p><br  /></p><p><strong>§本文首发于<span style="color: rgb(0, 176, 240);">2014年6月15日</span>，这是新闻实验室的第<span style="color: rgb(0, 176, 240);">43</span>篇文章</strong></p><p><strong>§本文是“<span style="color: rgb(0, 176, 240);">数据能为媒体带来什么</span>”系列之<span style="color: rgb(0, 176, 240);">三</span></strong></p><p><br  /></p><p><br  /></p><p><span style="color: rgb(79, 129, 189);">　　世界杯看得开心吗？别忘了NBA总决赛也在打啊。这个夏天又是全体球迷和伪球迷的狂欢节，熬夜之余，你有和朋友赌比赛胜负吗？如果你懂大数据的话，说不定能大赚一笔。去年，我的朋友王法就和其他几个同学一起写了一套用大数据预测NBA比赛胜负的程序，并且成功利用它实现了盈利。今天推送的这篇文章就是王法为新闻实验室撰写的，他介绍了项目开发的过程，以及背后的大数据理念。</span></p><p><span style="color: rgb(79, 129, 189);">　　其实，这样的预测不光赌球者需要，媒体也需要。上次提及的FiveThirtyEight就是靠预测美国大选而爆红的。当然，在中国没法刊发预测领导人的内容，但还有许多东西可以预测，只是得有既懂技术又懂新闻的人来扒数据和分析数据。</span></p><p><span style="color: rgb(79, 129, 189);">　　——新闻实验室主人 方可成</span></p><p><br  /></p><p><br  /></p><p><strong>作者：王法（UW-Madison电子工程专业博士生）</strong></p><p><br  /></p><p>大数据这个听上去有点geek的词汇，比我们想象得更快速更广泛侵入了人们的生活。人人都在谈论大数据，却不是所有人都清楚大数据到底是什么，是如何工作的。</p><p><br  /></p><p>简单来说，大数据就是那些由于硬件条件和算法所限，无法通过传统方法提取存贮和处理的数据集合。这个解释听上去似乎有点百度百科的味道，为了把这个问题讲得更清楚一些，我们从一个我做过的小项目聊起：预测一下今晚NBA比赛的比分。</p><p><br  /></p><p>ESPN那帮家伙对于NBA比赛得分预测做了很多研究工作。近年来大家已经逐渐发现，分别预测<span style="color: rgb(79, 129, 189);">进攻回合数</span>与<span style="color: rgb(79, 129, 189);">平均每次进攻得分</span>，再把两者相乘得到的结果比直接预测得分更加精确，因为回合数与平均进攻得分分别受不同的特征量影响——比如前者受主教练风格、队员的健康状况和休息状况影响更大；后者受对手的防守质量和球星的个人能力影响更大。简单起见，我们只分析进攻回合数的预测。</p><p><br  /></p><p>为了做这个预测，我们第一步得把那些影响进攻回合数的特征量找出来。这些数据可以在诸如http://stats.nba.com/ http://www.basketball-reference.com/这样网站获得。在那里，你可以轻松获得球队的历史成绩、休息状况（今晚是否是背靠背作战）、伤病情况等等，甚至可以详细至每支球队每一次进攻的过程和持球时间。</p><p><br  /></p><p>一般来讲，大数据的来源都可以分成三类：1、传统企业的数据：诸如沃尔玛的消费记录之类；2、机器和传感器数据：比如各种智能移动设备，以及现在炒得很热的可穿戴设备所提供的个人数据；3、社交数据：我们巨大的互联网。对一般人而言，前两者昂贵而难以获得，真正有意义的是第三类：它数据量大，并且绝大部分是免费的，在我们这个例子里，也同样采用了第三类数据来源。</p><p><br  /></p><p>现在我们已经有了一大堆包含各种所需数据的网页，人工录入这些数据似乎是个不可能完成的任务：这工作量太大了。所幸所有网页都用html格式来储存，这种格式规定，两个标签之间是将会在网页上显示的文本内容，而标签内部来规定文本的格式、字体、段落、属性等等（听上去跟latex有点像）。我们可以用这些标签为索引，来搜索我们想要的文本信息。剩下的工作就简单多了，我们还需要一些软件从指定网站批量下载html文件。在我这个小项目里，使用的是GNU的wget，因为它开源、易用、免费。通过这些处理，我们可以得到一个2.4GB（包含过去十个赛季的所有数据）数据包，它们被分门别类地整理成了几十个特征向量。</p><p><br  /></p><p>拿到整理好的数据，我们又面临一个新的挑战：用我手头这个破笔记本处理这些数据，大概会跑上好几天甚至好几周。对我来讲，为了处理这些数据买台超级电脑也不现实。其实这种尴尬的情况不只有我会遇到，这几乎成了整个IT界头疼的问题之一：设备的运算能力不够。以前有个大众耳熟能详的摩尔定律：每过18个月，电子产品的价格就会下降一半。也就是花上相同的钱，再等上一年半，你就可以获得双倍的计算能力。遗憾的是，随着芯片越来越接近其物理极限，现在摩尔定律已经不太管用了，我们得等上更长时间，目前是30个月，而且这个数字还在增加。另一方面，人类产生的数据量却以几何倍数在增长。</p><p><br  /></p><p>这种供需的失衡，就需要分布式计算来解决，或者我们可以用个看上去更厉害的名字：云计算。说穿了，就是把手头的数据，分散到几十个甚至更多的节点（CPU、GPU单元）去并行地做。Hadoop和HBase为我们提供了一整套解决方案。当然，我们不是时时刻刻都需要分布式处理，这只取决于你的数据量、硬件水平，以及对速度的追求。</p><p><br  /></p><p>成了，现在数据和硬件都齐活了，我们可以开始着手处理数据，用这些已有的特征向量，来预测某一场比赛某一支球队的进攻回合数了。我采用的是一种叫支持向量回归的统计方法来分析这些数据，这是一种很成熟的机器学习的方法，可以简单理解为线性回归的高维度版本——有多少个特征向量就有多少维。目前数学家、统计学家、计算机科学家都在数据挖掘，人工智能等诸多相关领域在努力争取透过纷繁复杂的数据，尽量看出数据背后隐含的规律。有兴趣的话，翻一点机器学习的材料会很有帮助。</p><p><br  /></p><p>现在，我们做出的这个模型平均误差在4分左右，当然还不够精确，但起码可以保证在赌球时赚钱的可能性大于50%了（合理投放资金的情况下）。</p><p><br  /></p><p>到现在为止，我们简单地走了一遍大数据的处理流程。在商业实践中，大数据可能有不同的数据来源，不同的云计算架构，不同的数据处理算法，但核心思想是不变的。</p><p><br  /></p><p>大数据让生活更加美好，它可以让医生更加准确地诊断疾病，让商场更加合理的安排物流，让银行规避风险，让交通更加快捷。我们可以用大数据预测奥斯卡小金人或者大力神杯的归属，甚至还可以预测美国总统选举的结果和中国政治改革的走向，可以用大数据来量化中国法治进程和政府的透明度。</p><p><br  /></p><p>我们从未有过这样的时代，信息是如此便宜而易于获得，但同时又是如此昂贵和难以处理。</p><p><br  /></p><p><strong>◆</strong></p><p><br  /></p><p><strong>这里是方可成的新闻实验室，欢迎关注，期待与你产生化学反应</strong></p><p><strong>方法1：点击右上角的按钮，选择“查看公众账号”，点击关注</strong></p><p><strong>方法2：在添加朋友中搜索newslab</strong></p>
+				</div>
+
+                
+                				        
+
+                
+
+                
+<div class="ct_mpda_wrp" id="js_sponsor_ad_area" style="display: none;"></div>
+
+
+                
+                <div class="read-more__area" id="js_more_read_area" style="display:none;">
+                    
+                </div>
+
+                 
+                                                </div>
+		<div class="comment">
+			<h3 style="margin:26px 0;font-weight:100;padding-bottom:4px;border-bottom:1px solid #ccc;">精选留言</h3>
+		    暂无...
+		</div>
+	</div>
+	<div class='dy_all'>
+		<a href='https://www.52pojie.cn/' target='_blank'>
+			吾爱破解论坛
+		</a>
+	</div>
+</body>
+<script>
+$(function(){
+    var wX_contentArray = document.getElementsByClassName('rich_media_content');
+    for(let i = 0; i < wX_contentArray.length;i++){
+       wX_contentArray[i].style.visibility = '';
+    }
+    if(document.getElementById('js_content')){
+        document.getElementById('js_content').style.visibility = '';
+    }
+})
+</script>

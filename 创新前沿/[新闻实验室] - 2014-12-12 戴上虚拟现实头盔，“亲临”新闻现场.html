@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'>
+	<title>
+		戴上虚拟现实头盔，“亲临”新闻现场
+	</title>
+	<script src='https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js'>
+	</script>
+	<style>
+		a {color: #607fa6;text-decoration:none;word-wrap:break-word;word-break:break-all;}.rich_media_title{padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid #e7e7eb;font-weight:400;} .rich_media_meta_list{font-size:14px;margin-bottom: 22px;}
+		.rich_media_meta{display:inline-block;vertical-align:middle;margin-right:8px;margin-bottom:10px;font-size:14px;}.rich_media_meta_text{color:#8c8c8c;color:rgba(0, 0, 0, 0.3)}.rich_media_meta_list
+		em {font-style: normal;}@media screen and (max-width:768px){.rich_media{position:
+		relative;padding: 20px 15px 15px;background-color: #fff;}}.rich_media_content{text-align:justify;} .rich_media_content * {max-width:100%!important;box-sizing: border-box!important;-webkit-box-sizing:
+		border-box!important;word-wrap: break-word!important;}.rich_media_content
+		blockquote {margin: 0;padding-left: 10px;border-left: 3px solid #dbdbdb;}.rich_media_content
+		.list-paddingleft-2 {padding-left: 2.2em;}a.rich_media_meta_nickname{display: none;}@media screen and (min-width:1025px){.rich_media{position:relative;}a.rich_media_meta_nickname{display:inline-block!important;}span.rich_media_meta_nickname
+		{display: inline-block!important;}.rich_media {width:677px;margin-left:auto;margin-right:auto;}}a.fwjm{font-size: 12px;color: #ececec;}.tenvideo_player {position: relative;width:
+		100 %;height: 100 %;margin: auto;background: #000;}* {margin:0px;padding:0px;} body{line-height: 1.6;letter-spacing: .034em;}
+		.dy_all {text-align: center;margin: 30px 0;} .dy_all a {display: inline-block;height:
+		38px;line-height: 38px;padding: 0 18px;background-color: #009688;color:
+		#fff;white-space: nowrap;font-size: 14px;border: none;border-radius: 2px;cursor:
+		pointer;text-align: center;outline: 0;-webkit-appearance: none;transition:
+		all .3s;-webkit-transition: all .3s;box-sizing: border-box;} img{max-width: 677px!important;}
+
+		.crawler-info{padding: 8px 0;} .article-link>img{margin-left: 20px;width: 16px;}
+		.comment-item::before,.comment-item::after{content:'';display:block;height:0;visibility:hidden;clear:both;*zoom:1;} .comment-item{margin-bottom:30px;}
+		.avatar{width:12%; padding-right:10px;float:left;box-sizing:border-box;} .avatar img{width:100%;}
+		.comment-body{float:left;width:88%;} .comment-body .comment-info{color:#b3b3b3;margin-bottom:4px;margin-top: -5px;} .comment-body .comment-info>span:last-child{float:right;} 
+		.comment-author{border-left:4px solid green;padding-left:6px;margin:8px 0;}
+
+		@media screen and (max-width: 420px) {.article-link>img {margin-left: 0px;}}
+		@media screen and (min-width: 480px) {.avatar {width: 9%;}.comment-body {width: 91%;}}
+	</style>
+</head>
+<body>
+	<div id='js_article' class='rich_media'>
+		<div class="crawler-info">
+			<a href='https://www.52pojie.cn' class='fwjm' target='_blank'>
+				提供的爬取软件来源于：52pojie.cn@夜泉 免费下载使用
+			</a>
+			<a href='https://mp.weixin.qq.com/s?__biz=MjM5NDEwNjQ0MQ==&amp;mid=202368645&amp;idx=1&amp;sn=79e934d32051c3dfeec0aa2e93b370e8&amp;chksm=2f779ba3180012b58ba8b0d2a1f5de31c1278c71f7d872d4dcf44766974d4c9c67b6824d5aea&amp;scene=27#wechat_redirect&cpage=39' target='_blank' class="article-link">
+				<img id="6c58b9f0-92ef-4fc6-831b-5bb679e709d5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAMAAABA3o1rAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjk4QUEzQzVDNkNGQjExRTk5NzNBQ0VBMjgzMjY1NjkwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjk4QUEzQzVENkNGQjExRTk5NzNBQ0VBMjgzMjY1NjkwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OThBQTNDNUE2Q0ZCMTFFOTk3M0FDRUEyODMyNjU2OTAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OThBQTNDNUI2Q0ZCMTFFOTk3M0FDRUEyODMyNjU2OTAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5TKSKsAAAAclBMVEUuLi77+/stLS1VVVXx8fFOTk7s7Ozt7e1qamp5eXlNTU2WlpZFRUU6Ojrq6urn5+d/f3/8/Pw9PT0/Pz+YmJg8PDyZmZlAQECfn5+QkJBBQUFra2vo6OhDQ0OSkpKenp5WVlY+Pj7r6+tpaWksLCz///9o6ILHAAAAJnRSTlP/////////////////////////////////////////////////AKd6gbwAAACNSURBVHjajJHpEoIwDISDVMotcnuCmLz/K9KCdlqO6v7p7Mw3yW4KxG85fnUkIVfZ5J0SsCtqcgRw0HzjQYY2AAOIdRuaK4ReAPJ5nmglL5qICahpU60C0uXguQ9TgIwGJoDnT9z/ABmxt60ot0N2CsDLfb9mvBxs9ql+n5o9bEDBgbif7/1F4g80CjAAqrVAnnsm5f8AAAAASUVORK5CYII=" />
+			</a>
+		</div>
+		<div id="img-content" class="rich_media_wrp">
+                
+                <h2 class="rich_media_title" id="activity-name">戴上虚拟现实头盔，“亲临”新闻现场</h2>
+                <div id="meta_content" class="rich_media_meta_list">
+                                                                                                                <span class="rich_media_meta rich_media_meta_text">
+                                                                    方可成
+                                                            </span>
+                                                                
+                                        <span class="rich_media_meta rich_media_meta_nickname" id="profileBt"><a href="javascript:void(0);">新闻实验室</a>
+                      <div id="js_profile_qrcode" class="profile_container" style="display:none;">
+                          <div class="profile_inner">
+                              <strong class="profile_nickname">新闻实验室</strong>
+                              <img class="profile_avatar" id="js_profile_qrcode_img" src="" alt="">
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">微信号</label>
+                              <span class="profile_meta_value">newslab</span>
+                              </p>
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">功能介绍</label>
+                              <span class="profile_meta_value">这里是方可成的新闻实验室，期待与你产生化学反应！在这里你可以读到关于新闻、媒体、科技、文艺、社会等多方面的跨界话题，有趣有料。</span>
+                              </p>
+                              
+                          </div>
+                          <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
+                              <i class="profile_arrow arrow_out"></i>
+                              <i class="profile_arrow arrow_in"></i>
+                          </span>
+                      </div>
+                    </span>
+                    <em id="publish_time" class="rich_media_meta rich_media_meta_text">2014-12-12</em>
+                </div>
+                
+
+                
+
+                
+
+                
+                                
+
+
+                
+                
+                
+                
+                                                
+                                <div class="rich_media_thumb_wrp" id="media">
+                    
+                                        
+                                    </div>
+                                                
+                                
+                                
+                
+                <div class="rich_media_content " id="js_content" style="">
+                    
+
+                    
+
+                    
+                    
+                    <p><span style="background-color: rgb(216, 216, 216);"><strong>「这里是方可成的新闻实验室，微信公众账号newslab」</strong></span></p><p><br  /></p><p><strong>§本文首发于<span style="color: rgb(0, 176, 240);">2014年12月12日</span>，这是新闻实验室的第<span style="color: rgb(0, 176, 240);">50</span>篇文章</strong></p><p><strong>§本文归属栏目：#显微镜#（详细介绍国内外可资借鉴的模式与案例）</strong></p><p><br  /></p><p><strong>作者：方可成</strong></p><p></p><p><br  /></p><p>若干年后，人们获取新闻的方式将不仅仅是摊开报纸、打开电视、点击鼠标、掏出手机，还有可能是戴上一款炫酷的虚拟现实头盔。</p><p><br  /></p><p>发烧级的游戏玩家可能会对虚拟现实头盔有所了解——的确，它的最初应用（也是目前最主要的应用）就是在游戏中。对着显示器玩游戏时，就算画面设计得再精美，双眼的视角始终只有40度左右，很难让人完全融入游戏创造的环境当中去。而戴上头盔后，眼前的3D屏幕视角将达到120度左右，当你扭头、转动眼珠时，眼前的画面便会相应移动，足以达到以假乱真的程度，让你的感官系统误以为自己身处真实环境中。不难想象：用这样的设备玩第一人称射击、动作或冒险类游戏该有多带劲。</p><p><br  /></p><p>虚拟现实技术的应用当然不限于游戏。社交媒体公司说它会改变我们的社交方式，让Facetime变成小儿科的玩具；旅游公司看到了将之用于酒店预订、景点预览等功能的潜力……而新闻业最近也开始了这方面的尝试，并有了初步的作品。</p><p><br  /></p><p>其实，“还原现实”一直是新闻业的核心使命之一。穷追不舍的采访、妙笔生花的行文、精心采集的图片、视频和声音，乃至近几年来在台湾大受欢迎的“动新闻”，都在追求更准确、更生动地还原新闻现场，带读者进入具体的情境，理解新闻事实。</p><p><br  /></p><p>技术的进步让还原现实有了新的可能性。今年9月，美国爱荷华州首府的《德梅因纪事报（Des Moines Register）》推出了开创性的虚拟现实作品，其合作方正是虚拟现实技术的领头羊——今年刚被Facebook以20亿美元收购的Oculus公司。</p><p><br  /></p><p>这部作品的主题是爱荷华的农场——美国人口结构的变化和经济发展的起落如何影响这个中西部农业州的普通家庭。戴上头盔后，你可以在农场上自由探索，3D图像完全根据真实场景制作，你的身边是正在修拖拉机的农场主、散步的牲畜和嬉戏的孩童。在一些建筑和特定的地点上，会出现不同的提示图标——常玩游戏的人对这样的图标不会陌生，走近点击之后会有相应的信息弹出，你可以阅读相关文字、浏览历史照片、倾听人物讲述，等等。</p><p><br  /></p><p>不过，目前Oculus的虚拟现实头盔还没有公开售卖，只有部分游戏开发者和铁杆玩家手头拥有这部设备。因此，这家报纸也提供了一个2D的网页版本可供查看：http://www.desmoinesregister.com/pages/interactives/harvest-of-change/ 自然，其效果要逊色很多。</p><p><br  /></p><p>为了制作这部作品，报社的花费并不算太多——不到五万美元。其中包括农场上的360度全景摄像、收集资料、采写文字内容，以及最后的制作。</p><p><br  /></p><p>这笔钱花得是否值得？在报社看来，这是为应对日益下降的报纸阅读率、回应年轻人的需求和喜好而做出的有益尝试。按照《德梅因纪事报》的母公司Gannett（它也是《今日美国》的母公司）副总裁Gelman的说法，“这是新闻人和‘Minecraft一代’沟通时需要用到的方式。”</p><p><br  /></p><p>Minecraft是一款在年轻人中非常流行的游戏，它并没有传统意义上的胜利或失败。在游戏中，世界由各类方块构成，玩家可以通过伐木、捕猎等方式获取资源，建造自己的家园，也可以进行破坏活动。“Minecraft一代喜欢去寻找东西、建造东西、发现东西，获取乐趣。”Gelman说，“既然可以在这类游戏中建造虚拟的世界，那我们也可以建造一个现实世界。”</p><p><br  /></p><p>正因为是出于这样的理念，《德梅因纪事报》的这部作品中充满了年轻人熟悉的游戏美学。这样的呈现方式是否会被早已不看报纸的年轻人接受？这个问题还要等到虚拟现实设备大规模上市、更多新闻机构尝试新技术后才能得到回答。</p><p><br  /></p><p>当然，这种新的重建现实的方式，也会带来不少问题和风险。最重要的问题是：新技术所能带来的观感是颠覆性的，很容易让受众不加思考和批判地接受，但是不要忘记，这样的“虚拟现实”说到底还是虚拟的，是人为构建的。我们当然可以利用各类真实的影像资料来尽可能还原现实，但100%的还原总是很难，更何况还原的过程中还有种种被操纵的危险——在对抗议事件的报道中，悄悄把打人的警察抹去；在自然灾害的现场还原中，把原本坍塌了的建筑重新竖立起来……所以，在受众尚没有做好充分准备之前，在没有足够充分的信息流动时，虚拟现实这种强大的技术也有可能变成扭曲报道、虚假宣传的利器。</p><p><br  /></p><p><strong>◆</strong></p><p><br  /></p><p><strong>这里是方可成的新闻实验室，欢迎关注，期待与你产生化学反应</strong></p><p><strong>方法1：点击右上角的按钮，选择“查看公众账号”，点击关注</strong></p><p><strong>方法2：在添加朋友中搜索newslab</strong></p>
+				</div>
+
+                
+                				        
+
+                
+
+                
+<div class="ct_mpda_wrp" id="js_sponsor_ad_area" style="display: none;"></div>
+
+
+                
+                <div class="read-more__area" id="js_more_read_area" style="display:none;">
+                    
+                </div>
+
+                 
+                                                </div>
+		<div class="comment">
+			<h3 style="margin:26px 0;font-weight:100;padding-bottom:4px;border-bottom:1px solid #ccc;">精选留言</h3>
+		    暂无...
+		</div>
+	</div>
+	<div class='dy_all'>
+		<a href='https://www.52pojie.cn/' target='_blank'>
+			吾爱破解论坛
+		</a>
+	</div>
+</body>
+<script>
+$(function(){
+    var wX_contentArray = document.getElementsByClassName('rich_media_content');
+    for(let i = 0; i < wX_contentArray.length;i++){
+       wX_contentArray[i].style.visibility = '';
+    }
+    if(document.getElementById('js_content')){
+        document.getElementById('js_content').style.visibility = '';
+    }
+})
+</script>
